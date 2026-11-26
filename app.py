@@ -34,7 +34,7 @@ if submit:
         brief=dict(producto=product,mercado=market,edades=ages,habitos=habits,objetivo=objective or 'No definido',canales=channels,presupuesto_COP=int(budget),duracion_dias=days,contexto=extra)
         try:
             with st.spinner('Generando con Gemini…'):
-                response=genai.Client(api_key=key).models.generate_content(model=model,contents=json.dumps(brief,ensure_ascii=False),config=types.GenerateContentConfig(system_instruction=SYSTEM,temperature=0.4))
+response=genai.Client(api_key=key).models.generate_content
                 if not response.text: raise ValueError('Respuesta vacía')
                 st.session_state.result={'modelo':model,'brief':brief,'resultado':response.text}
         except Exception as e: st.error(str(e).replace(key, "[OCULTO]"))
