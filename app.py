@@ -37,7 +37,7 @@ if submit:
                 response=genai.Client(api_key=key).models.generate_content(model=model,contents=json.dumps(brief,ensure_ascii=False),config=types.GenerateContentConfig(system_instruction=SYSTEM,temperature=0.4))
                 if not response.text: raise ValueError('Respuesta vacía')
                 st.session_state.result={'modelo':model,'brief':brief,'resultado':response.text}
-        except Exception as e: st.error(f"Error: {type(e).__name__} - Código: {getattr(e, 'code', 'N/A')}")
+        except Exception as e: st.error(str(e).replace(key, "[OCULTO]"))
 if 'result' in st.session_state:
     r=st.session_state.result
     st.subheader('Campaña generada')
