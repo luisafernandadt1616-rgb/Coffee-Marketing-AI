@@ -13,7 +13,7 @@ with st.sidebar:
         try: key=st.secrets.get('GEMINI_API_KEY','')
         except Exception: pass
     key = key or st.text_input('Clave Gemini API',type='password')
-    model=st.text_input('Modelo disponible en tu cuenta',value='gemini-2.5-flash')
+    model=st.text_input('Modelo disponible en tu cuenta', value='gemini-3.8-flash')
     st.caption('No ingreses datos personales. La información del brief se envía a Gemini.')
 with st.form('brief'):
     product=st.text_input('Producto', 'Café premium')
